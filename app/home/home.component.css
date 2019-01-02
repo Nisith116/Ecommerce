@@ -1,0 +1,14 @@
+button:focus{
+    background-color: #226ee8;
+    cursor:pointer;
+    
+}
+button:hover{
+    
+    cursor:pointer;
+    
+}
+
+.sticky-top{
+    top:80px;
+}

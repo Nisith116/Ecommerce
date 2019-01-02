@@ -1,0 +1,64 @@
+
+<div class="container">
+    
+  <div class="row" style='width:100%'>
+      
+      <div class="col-12 col-md-3">
+          <div class="sticky-top">
+        <div class="card" style="width: 18rem;">
+          
+          <button class="card-header category" (click)="showProduct()">
+            All categories
+          </button>
+          <ul class="list-group list-group-flush category" *ngFor="let val of data">
+            <button class="btn btn-primary "  (click)="showProduct(val.name)" class="list-group-item">{{val.name}}</button>
+            
+          </ul> 
+          
+          </div></div></div>
+          <div class="col-6 col-md-1"></div>
+      <div class="col-6 col-md-8" >
+          <div class="card-deck " >
+            
+            <ng-container *ngIf='!filteredCategory.length==0;else show'>
+                <div class="card-group col-md-6" style='padding:20px' *ngFor="let value of filteredCategory">
+                    
+                    <div class="card"  >
+                      <img class="card-img-top" [src]="value.data.imageUrl" alt="Card image cap">
+                      <div class="card-body">
+                        <h5 class="card-title">{{value.data.title}}</h5>
+                        <p class="card-text">${{value.data.price}}</p>
+                        <p class="card-text"><small class="text-muted">{{value.data.category}}</small></p>
+                        
+                      </div>
+                      <button *ngIf="!(highlightCartProduct(value.key))" class="btn btn-sucess" (click)="addToCart($event,value.key,value.data,'add')">Add to cart</button>
+                      <div *ngIf="highlightCartProduct(value.key)">
+                        <button   type="button" class="btn btn-primary col-sm-5"  (click)="addToCart($event,value.key,value.data,'add')">+</button>
+                        <span  #count class="col-sm-2"  >{{countDOM}}</span>
+                        <span></span>
+                        <button style="margin-right: 0px" type="button" class="btn btn-primary col-sm-5"  (click)="addToCart($event,value.key,value.data,'sub')">-</button>
+                      </div>
+                      
+                    </div>
+                  </div>
+            </ng-container>
+                
+                    
+
+                  </div>
+                  <ng-template #show style='padding:20px'>
+                      <h1 style="align-content:center">No data to display</h1>
+                    </ng-template>
+            
+          
+    
+    </div>
+          
+        </div>
+  </div>
+    
+
+  
+
+
+
